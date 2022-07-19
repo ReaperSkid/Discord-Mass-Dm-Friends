@@ -1,4 +1,3 @@
-from email import message
 import discord
 client = discord.Client()
 import colorama
