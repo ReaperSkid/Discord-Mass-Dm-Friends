@@ -5,9 +5,9 @@ import threading
 client = discord.Client()
 colorama.init()
  
-token = input("What is your discord token | ")
-Message = input("What Do You Want To Mass DM | ")
-thread_amount = int(input("How Many Threads | "))
+token = input("What is your discord token [-->]: ")
+Message = input("What Do You Want To Mass DM [-->]: ")
+thread_amount = int(input("How Many Threads [-->]: "))
 used_threads = thread_amount * 100000
  
 @client.event
@@ -19,7 +19,7 @@ async def on_connect():
         except:
             print(f"unable to message: {user.name}")
 def run():
-    client.run(token, bot=False)
+    client.run("YOUR TOKEN HERE", bot=False)
  
 threads = []
  
