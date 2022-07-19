@@ -1,5 +1,5 @@
 import discord
-import colorama
+import colorama as *
 import threading
  
 client = discord.Client()
