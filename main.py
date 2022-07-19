@@ -1,20 +1,35 @@
 import discord
-client = discord.Client()
 import colorama
-from colorama import Fore, Back, Style
+import threading
+ 
+client = discord.Client()
 colorama.init()
-
-Message = input("What would you like to Mass DM? [==>]: ")
-
+ 
+token = input("What is your discord token | ")
+Message = input("What Do You Want To Mass DM | ")
+thread_amount = int(input("How Many Threads | "))
+used_threads = thread_amount * 100000
+ 
 @client.event
 async def on_connect():
     for user in client.user.friends:
         try:
-            await user.send(message)
-            Fore.GREEN
+            await user.send(Message)
             print(f"message: {user.name}")
         except:
-            Fore.RED
-            print(f"couldnt message: {user.name}")
-
-client.run("YOUR DISCORD TOKEN HERE", bot=False)
+            print(f"unable to message: {user.name}")
+def run():
+    client.run(token, bot=False)
+ 
+threads = []
+ 
+for i in range(thread_amount):
+    t = threading.Thread(target=run())
+    t.daemon = False
+    threads.append(t)
+ 
+for i in range(thread_amount):
+    threads[i].start()
+ 
+for i in range(thread_amount):
+    threads[i].join()
