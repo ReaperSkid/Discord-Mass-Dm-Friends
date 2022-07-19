@@ -15,8 +15,10 @@ async def on_connect():
     for user in client.user.friends:
         try:
             await user.send(Message)
+            print(Fore.GREEN)
             print(f"message: {user.name}")
         except:
+            print(Fore.RED)
             print(f"unable to message: {user.name}")
 def run():
     client.run("YOUR TOKEN HERE", bot=False)
